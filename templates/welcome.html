@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my page!</h1>
+    <p>
+        This is my demo application on <em>Flask</em> from <a href="https://www.pluralsight.com">Pluralsight</a>.
+    </p>
+    <img src="/static/flaskLogo.png">
+    <ul>
+        <!-- Jinja for-loop, creates list item for every card -->
+        {% for card in cards %}
+            <li>
+                <!-- Jinja url, loop.index0 iteratively counts each loop cycle from 0 -->
+                <a href="{{ url_for('card_view', index=loop.index0) }}">
+                    <!-- Jinja variable -->
+                    {{ card.question }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_card') }}">Add a new card</a>
+{% endblock %}
